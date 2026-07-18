@@ -15,6 +15,7 @@ import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as AppUsersRouteImport } from './routes/app.users'
 import { Route as AppSettingsRouteImport } from './routes/app.settings'
 import { Route as AppResourcesRouteImport } from './routes/app.resources'
@@ -58,6 +59,11 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRoute,
 } as any)
 const AppUsersRoute = AppUsersRouteImport.update({
   id: '/users',
@@ -145,10 +151,10 @@ export interface FileRoutesByFullPath {
   '/app/resources': typeof AppResourcesRoute
   '/app/settings': typeof AppSettingsRoute
   '/app/users': typeof AppUsersRoute
+  '/app/': typeof AppIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/app': typeof AppRouteWithChildren
   '/forgot-password': typeof ForgotPasswordRoute
   '/reset-password': typeof ResetPasswordRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -166,6 +172,7 @@ export interface FileRoutesByTo {
   '/app/resources': typeof AppResourcesRoute
   '/app/settings': typeof AppSettingsRoute
   '/app/users': typeof AppUsersRoute
+  '/app': typeof AppIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -188,6 +195,7 @@ export interface FileRoutesById {
   '/app/resources': typeof AppResourcesRoute
   '/app/settings': typeof AppSettingsRoute
   '/app/users': typeof AppUsersRoute
+  '/app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -211,10 +219,10 @@ export interface FileRouteTypes {
     | '/app/resources'
     | '/app/settings'
     | '/app/users'
+    | '/app/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/app'
     | '/forgot-password'
     | '/reset-password'
     | '/sitemap.xml'
@@ -232,6 +240,7 @@ export interface FileRouteTypes {
     | '/app/resources'
     | '/app/settings'
     | '/app/users'
+    | '/app'
   id:
     | '__root__'
     | '/'
@@ -253,6 +262,7 @@ export interface FileRouteTypes {
     | '/app/resources'
     | '/app/settings'
     | '/app/users'
+    | '/app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -307,6 +317,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/app/': {
+      id: '/app/'
+      path: '/'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
     }
     '/app/users': {
       id: '/app/users'
@@ -416,6 +433,7 @@ interface AppRouteChildren {
   AppResourcesRoute: typeof AppResourcesRoute
   AppSettingsRoute: typeof AppSettingsRoute
   AppUsersRoute: typeof AppUsersRoute
+  AppIndexRoute: typeof AppIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
@@ -432,6 +450,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppResourcesRoute: AppResourcesRoute,
   AppSettingsRoute: AppSettingsRoute,
   AppUsersRoute: AppUsersRoute,
+  AppIndexRoute: AppIndexRoute,
 }
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
