@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /app/
+Disallow: /reset-password
+Disallow: /verify-otp
+Disallow: /forgot-password
