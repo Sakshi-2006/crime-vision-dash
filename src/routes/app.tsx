@@ -4,7 +4,7 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { TopBar } from "@/components/top-bar";
 import { getSession } from "@/lib/auth";
 
-export const Route = createFileRoute("/_app")({
+export const Route = createFileRoute("/app")({
   beforeLoad: () => {
     if (typeof window !== "undefined" && !getSession()) {
       throw redirect({ to: "/" });

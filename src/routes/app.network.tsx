@@ -8,7 +8,7 @@ import { Search, ZoomIn, ZoomOut, Maximize2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
-export const Route = createFileRoute("/_app/network")({
+export const Route = createFileRoute("/app/network")({
   component: NetworkPage,
 });
 

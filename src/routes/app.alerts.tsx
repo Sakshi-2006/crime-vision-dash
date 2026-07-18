@@ -10,7 +10,7 @@ import {
   Tabs, TabsList, TabsTrigger, TabsContent,
 } from "@/components/ui/tabs";
 
-export const Route = createFileRoute("/_app/alerts")({
+export const Route = createFileRoute("/app/alerts")({
   component: AlertsPage,
 });
 

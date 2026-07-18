@@ -13,21 +13,21 @@ import { Route as VerifyOtpRouteImport } from './routes/verify-otp'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
-import { Route as AppRouteImport } from './routes/_app'
+import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AppUsersRouteImport } from './routes/_app.users'
-import { Route as AppSettingsRouteImport } from './routes/_app.settings'
-import { Route as AppResourcesRouteImport } from './routes/_app.resources'
-import { Route as AppReportsRouteImport } from './routes/_app.reports'
-import { Route as AppPredictionsRouteImport } from './routes/_app.predictions'
-import { Route as AppNotificationsRouteImport } from './routes/_app.notifications'
-import { Route as AppNetworkRouteImport } from './routes/_app.network'
-import { Route as AppMapRouteImport } from './routes/_app.map'
-import { Route as AppDistrictsRouteImport } from './routes/_app.districts'
-import { Route as AppDashboardRouteImport } from './routes/_app.dashboard'
-import { Route as AppAssistantRouteImport } from './routes/_app.assistant'
-import { Route as AppAnalyticsRouteImport } from './routes/_app.analytics'
-import { Route as AppAlertsRouteImport } from './routes/_app.alerts'
+import { Route as AppUsersRouteImport } from './routes/app.users'
+import { Route as AppSettingsRouteImport } from './routes/app.settings'
+import { Route as AppResourcesRouteImport } from './routes/app.resources'
+import { Route as AppReportsRouteImport } from './routes/app.reports'
+import { Route as AppPredictionsRouteImport } from './routes/app.predictions'
+import { Route as AppNotificationsRouteImport } from './routes/app.notifications'
+import { Route as AppNetworkRouteImport } from './routes/app.network'
+import { Route as AppMapRouteImport } from './routes/app.map'
+import { Route as AppDistrictsRouteImport } from './routes/app.districts'
+import { Route as AppDashboardRouteImport } from './routes/app.dashboard'
+import { Route as AppAssistantRouteImport } from './routes/app.assistant'
+import { Route as AppAnalyticsRouteImport } from './routes/app.analytics'
+import { Route as AppAlertsRouteImport } from './routes/app.alerts'
 
 const VerifyOtpRoute = VerifyOtpRouteImport.update({
   id: '/verify-otp',
@@ -50,7 +50,8 @@ const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppRoute = AppRouteImport.update({
-  id: '/_app',
+  id: '/app',
+  path: '/app',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -126,128 +127,132 @@ const AppAlertsRoute = AppAlertsRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
   '/forgot-password': typeof ForgotPasswordRoute
   '/reset-password': typeof ResetPasswordRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/verify-otp': typeof VerifyOtpRoute
-  '/alerts': typeof AppAlertsRoute
-  '/analytics': typeof AppAnalyticsRoute
-  '/assistant': typeof AppAssistantRoute
-  '/dashboard': typeof AppDashboardRoute
-  '/districts': typeof AppDistrictsRoute
-  '/map': typeof AppMapRoute
-  '/network': typeof AppNetworkRoute
-  '/notifications': typeof AppNotificationsRoute
-  '/predictions': typeof AppPredictionsRoute
-  '/reports': typeof AppReportsRoute
-  '/resources': typeof AppResourcesRoute
-  '/settings': typeof AppSettingsRoute
-  '/users': typeof AppUsersRoute
+  '/app/alerts': typeof AppAlertsRoute
+  '/app/analytics': typeof AppAnalyticsRoute
+  '/app/assistant': typeof AppAssistantRoute
+  '/app/dashboard': typeof AppDashboardRoute
+  '/app/districts': typeof AppDistrictsRoute
+  '/app/map': typeof AppMapRoute
+  '/app/network': typeof AppNetworkRoute
+  '/app/notifications': typeof AppNotificationsRoute
+  '/app/predictions': typeof AppPredictionsRoute
+  '/app/reports': typeof AppReportsRoute
+  '/app/resources': typeof AppResourcesRoute
+  '/app/settings': typeof AppSettingsRoute
+  '/app/users': typeof AppUsersRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
   '/forgot-password': typeof ForgotPasswordRoute
   '/reset-password': typeof ResetPasswordRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/verify-otp': typeof VerifyOtpRoute
-  '/alerts': typeof AppAlertsRoute
-  '/analytics': typeof AppAnalyticsRoute
-  '/assistant': typeof AppAssistantRoute
-  '/dashboard': typeof AppDashboardRoute
-  '/districts': typeof AppDistrictsRoute
-  '/map': typeof AppMapRoute
-  '/network': typeof AppNetworkRoute
-  '/notifications': typeof AppNotificationsRoute
-  '/predictions': typeof AppPredictionsRoute
-  '/reports': typeof AppReportsRoute
-  '/resources': typeof AppResourcesRoute
-  '/settings': typeof AppSettingsRoute
-  '/users': typeof AppUsersRoute
+  '/app/alerts': typeof AppAlertsRoute
+  '/app/analytics': typeof AppAnalyticsRoute
+  '/app/assistant': typeof AppAssistantRoute
+  '/app/dashboard': typeof AppDashboardRoute
+  '/app/districts': typeof AppDistrictsRoute
+  '/app/map': typeof AppMapRoute
+  '/app/network': typeof AppNetworkRoute
+  '/app/notifications': typeof AppNotificationsRoute
+  '/app/predictions': typeof AppPredictionsRoute
+  '/app/reports': typeof AppReportsRoute
+  '/app/resources': typeof AppResourcesRoute
+  '/app/settings': typeof AppSettingsRoute
+  '/app/users': typeof AppUsersRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/_app': typeof AppRouteWithChildren
+  '/app': typeof AppRouteWithChildren
   '/forgot-password': typeof ForgotPasswordRoute
   '/reset-password': typeof ResetPasswordRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/verify-otp': typeof VerifyOtpRoute
-  '/_app/alerts': typeof AppAlertsRoute
-  '/_app/analytics': typeof AppAnalyticsRoute
-  '/_app/assistant': typeof AppAssistantRoute
-  '/_app/dashboard': typeof AppDashboardRoute
-  '/_app/districts': typeof AppDistrictsRoute
-  '/_app/map': typeof AppMapRoute
-  '/_app/network': typeof AppNetworkRoute
-  '/_app/notifications': typeof AppNotificationsRoute
-  '/_app/predictions': typeof AppPredictionsRoute
-  '/_app/reports': typeof AppReportsRoute
-  '/_app/resources': typeof AppResourcesRoute
-  '/_app/settings': typeof AppSettingsRoute
-  '/_app/users': typeof AppUsersRoute
+  '/app/alerts': typeof AppAlertsRoute
+  '/app/analytics': typeof AppAnalyticsRoute
+  '/app/assistant': typeof AppAssistantRoute
+  '/app/dashboard': typeof AppDashboardRoute
+  '/app/districts': typeof AppDistrictsRoute
+  '/app/map': typeof AppMapRoute
+  '/app/network': typeof AppNetworkRoute
+  '/app/notifications': typeof AppNotificationsRoute
+  '/app/predictions': typeof AppPredictionsRoute
+  '/app/reports': typeof AppReportsRoute
+  '/app/resources': typeof AppResourcesRoute
+  '/app/settings': typeof AppSettingsRoute
+  '/app/users': typeof AppUsersRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/app'
     | '/forgot-password'
     | '/reset-password'
     | '/sitemap.xml'
     | '/verify-otp'
-    | '/alerts'
-    | '/analytics'
-    | '/assistant'
-    | '/dashboard'
-    | '/districts'
-    | '/map'
-    | '/network'
-    | '/notifications'
-    | '/predictions'
-    | '/reports'
-    | '/resources'
-    | '/settings'
-    | '/users'
+    | '/app/alerts'
+    | '/app/analytics'
+    | '/app/assistant'
+    | '/app/dashboard'
+    | '/app/districts'
+    | '/app/map'
+    | '/app/network'
+    | '/app/notifications'
+    | '/app/predictions'
+    | '/app/reports'
+    | '/app/resources'
+    | '/app/settings'
+    | '/app/users'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/app'
     | '/forgot-password'
     | '/reset-password'
     | '/sitemap.xml'
     | '/verify-otp'
-    | '/alerts'
-    | '/analytics'
-    | '/assistant'
-    | '/dashboard'
-    | '/districts'
-    | '/map'
-    | '/network'
-    | '/notifications'
-    | '/predictions'
-    | '/reports'
-    | '/resources'
-    | '/settings'
-    | '/users'
+    | '/app/alerts'
+    | '/app/analytics'
+    | '/app/assistant'
+    | '/app/dashboard'
+    | '/app/districts'
+    | '/app/map'
+    | '/app/network'
+    | '/app/notifications'
+    | '/app/predictions'
+    | '/app/reports'
+    | '/app/resources'
+    | '/app/settings'
+    | '/app/users'
   id:
     | '__root__'
     | '/'
-    | '/_app'
+    | '/app'
     | '/forgot-password'
     | '/reset-password'
     | '/sitemap.xml'
     | '/verify-otp'
-    | '/_app/alerts'
-    | '/_app/analytics'
-    | '/_app/assistant'
-    | '/_app/dashboard'
-    | '/_app/districts'
-    | '/_app/map'
-    | '/_app/network'
-    | '/_app/notifications'
-    | '/_app/predictions'
-    | '/_app/reports'
-    | '/_app/resources'
-    | '/_app/settings'
-    | '/_app/users'
+    | '/app/alerts'
+    | '/app/analytics'
+    | '/app/assistant'
+    | '/app/dashboard'
+    | '/app/districts'
+    | '/app/map'
+    | '/app/network'
+    | '/app/notifications'
+    | '/app/predictions'
+    | '/app/reports'
+    | '/app/resources'
+    | '/app/settings'
+    | '/app/users'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -289,10 +294,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForgotPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_app': {
-      id: '/_app'
-      path: ''
-      fullPath: '/'
+    '/app': {
+      id: '/app'
+      path: '/app'
+      fullPath: '/app'
       preLoaderRoute: typeof AppRouteImport
       parentRoute: typeof rootRouteImport
     }
@@ -303,94 +308,94 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_app/users': {
-      id: '/_app/users'
+    '/app/users': {
+      id: '/app/users'
       path: '/users'
-      fullPath: '/users'
+      fullPath: '/app/users'
       preLoaderRoute: typeof AppUsersRouteImport
       parentRoute: typeof AppRoute
     }
-    '/_app/settings': {
-      id: '/_app/settings'
+    '/app/settings': {
+      id: '/app/settings'
       path: '/settings'
-      fullPath: '/settings'
+      fullPath: '/app/settings'
       preLoaderRoute: typeof AppSettingsRouteImport
       parentRoute: typeof AppRoute
     }
-    '/_app/resources': {
-      id: '/_app/resources'
+    '/app/resources': {
+      id: '/app/resources'
       path: '/resources'
-      fullPath: '/resources'
+      fullPath: '/app/resources'
       preLoaderRoute: typeof AppResourcesRouteImport
       parentRoute: typeof AppRoute
     }
-    '/_app/reports': {
-      id: '/_app/reports'
+    '/app/reports': {
+      id: '/app/reports'
       path: '/reports'
-      fullPath: '/reports'
+      fullPath: '/app/reports'
       preLoaderRoute: typeof AppReportsRouteImport
       parentRoute: typeof AppRoute
     }
-    '/_app/predictions': {
-      id: '/_app/predictions'
+    '/app/predictions': {
+      id: '/app/predictions'
       path: '/predictions'
-      fullPath: '/predictions'
+      fullPath: '/app/predictions'
       preLoaderRoute: typeof AppPredictionsRouteImport
       parentRoute: typeof AppRoute
     }
-    '/_app/notifications': {
-      id: '/_app/notifications'
+    '/app/notifications': {
+      id: '/app/notifications'
       path: '/notifications'
-      fullPath: '/notifications'
+      fullPath: '/app/notifications'
       preLoaderRoute: typeof AppNotificationsRouteImport
       parentRoute: typeof AppRoute
     }
-    '/_app/network': {
-      id: '/_app/network'
+    '/app/network': {
+      id: '/app/network'
       path: '/network'
-      fullPath: '/network'
+      fullPath: '/app/network'
       preLoaderRoute: typeof AppNetworkRouteImport
       parentRoute: typeof AppRoute
     }
-    '/_app/map': {
-      id: '/_app/map'
+    '/app/map': {
+      id: '/app/map'
       path: '/map'
-      fullPath: '/map'
+      fullPath: '/app/map'
       preLoaderRoute: typeof AppMapRouteImport
       parentRoute: typeof AppRoute
     }
-    '/_app/districts': {
-      id: '/_app/districts'
+    '/app/districts': {
+      id: '/app/districts'
       path: '/districts'
-      fullPath: '/districts'
+      fullPath: '/app/districts'
       preLoaderRoute: typeof AppDistrictsRouteImport
       parentRoute: typeof AppRoute
     }
-    '/_app/dashboard': {
-      id: '/_app/dashboard'
+    '/app/dashboard': {
+      id: '/app/dashboard'
       path: '/dashboard'
-      fullPath: '/dashboard'
+      fullPath: '/app/dashboard'
       preLoaderRoute: typeof AppDashboardRouteImport
       parentRoute: typeof AppRoute
     }
-    '/_app/assistant': {
-      id: '/_app/assistant'
+    '/app/assistant': {
+      id: '/app/assistant'
       path: '/assistant'
-      fullPath: '/assistant'
+      fullPath: '/app/assistant'
       preLoaderRoute: typeof AppAssistantRouteImport
       parentRoute: typeof AppRoute
     }
-    '/_app/analytics': {
-      id: '/_app/analytics'
+    '/app/analytics': {
+      id: '/app/analytics'
       path: '/analytics'
-      fullPath: '/analytics'
+      fullPath: '/app/analytics'
       preLoaderRoute: typeof AppAnalyticsRouteImport
       parentRoute: typeof AppRoute
     }
-    '/_app/alerts': {
-      id: '/_app/alerts'
+    '/app/alerts': {
+      id: '/app/alerts'
       path: '/alerts'
-      fullPath: '/alerts'
+      fullPath: '/app/alerts'
       preLoaderRoute: typeof AppAlertsRouteImport
       parentRoute: typeof AppRoute
     }

@@ -14,7 +14,7 @@ import {
 } from "recharts";
 import { crimeByType, crimeTrend, districts } from "@/lib/mock-data";
 
-export const Route = createFileRoute("/_app/analytics")({
+export const Route = createFileRoute("/app/analytics")({
   component: AnalyticsPage,
 });
 

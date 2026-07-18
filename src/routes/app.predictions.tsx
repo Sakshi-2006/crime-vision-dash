@@ -8,7 +8,7 @@ import { Brain, TrendingUp, TrendingDown, Minus, Sparkles } from "lucide-react";
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { motion } from "framer-motion";
 
-export const Route = createFileRoute("/_app/predictions")({
+export const Route = createFileRoute("/app/predictions")({
   component: PredictionsPage,
 });
 

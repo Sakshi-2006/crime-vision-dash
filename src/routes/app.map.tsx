@@ -9,7 +9,7 @@ import { Layers, Clock, ZoomIn } from "lucide-react";
 
 const LazyMap = lazy(() => import("@/components/crime-map"));
 
-export const Route = createFileRoute("/_app/map")({
+export const Route = createFileRoute("/app/map")({
   component: MapPage,
 });
 

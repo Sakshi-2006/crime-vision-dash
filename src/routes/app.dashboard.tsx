@@ -43,7 +43,7 @@ import {
 } from "@/lib/mock-data";
 import { motion } from "framer-motion";
 
-export const Route = createFileRoute("/_app/dashboard")({
+export const Route = createFileRoute("/app/dashboard")({
   component: DashboardPage,
 });
 

@@ -8,7 +8,7 @@ import { Area, AreaChart, Bar, BarChart, CartesianGrid, Cell, ResponsiveContaine
 import { cn } from "@/lib/utils";
 import { Users, MapPin, Brain, TrendingUp } from "lucide-react";
 
-export const Route = createFileRoute("/_app/districts")({
+export const Route = createFileRoute("/app/districts")({
   component: DistrictsPage,
 });
 

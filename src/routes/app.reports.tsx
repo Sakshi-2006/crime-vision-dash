@@ -7,7 +7,7 @@ import { reportsList } from "@/lib/mock-data";
 import { Download, FileText, FilePlus2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
-export const Route = createFileRoute("/_app/reports")({
+export const Route = createFileRoute("/app/reports")({
   component: ReportsPage,
 });
 

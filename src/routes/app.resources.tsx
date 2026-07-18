@@ -8,7 +8,7 @@ import { Car, Building2, Users, Sparkles } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/_app/resources")({
+export const Route = createFileRoute("/app/resources")({
   component: ResourcesPage,
 });
 

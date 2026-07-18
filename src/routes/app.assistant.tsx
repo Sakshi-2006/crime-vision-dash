@@ -9,7 +9,7 @@ import { Send, Sparkles, ShieldCheck } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 
-export const Route = createFileRoute("/_app/assistant")({
+export const Route = createFileRoute("/app/assistant")({
   component: AssistantPage,
 });
 

@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/select";
 import { toast } from "sonner";
 
-export const Route = createFileRoute("/_app/settings")({
+export const Route = createFileRoute("/app/settings")({
   component: SettingsPage,
 });
 

@@ -7,7 +7,7 @@ import { notifications } from "@/lib/mock-data";
 import { AlertCircle, Info, CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/_app/notifications")({
+export const Route = createFileRoute("/app/notifications")({
   component: NotificationsPage,
 });
 
