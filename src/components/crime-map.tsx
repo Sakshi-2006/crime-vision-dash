@@ -1,5 +1,5 @@
 import { MapContainer, TileLayer, CircleMarker, Marker, Popup, Circle } from "react-leaflet";
-import { heatmapPoints } from "@/lib/mock-data";
+import { heatmapPoints, BENGALURU_CENTER } from "@/lib/mock-data";
 import { useEffect } from "react";
 import L from "leaflet";
 
@@ -12,17 +12,24 @@ L.Icon.Default.mergeOptions({
   shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
 });
 
-export default function CrimeMap({ layer }: { layer: "heatmap" | "markers" | "clusters" }) {
+export default function CrimeMap({
+  layer,
+  center = BENGALURU_CENTER,
+  zoom = 11,
+}: {
+  layer: "heatmap" | "markers" | "clusters";
+  center?: [number, number];
+  zoom?: number;
+}) {
   useEffect(() => {
-    // Fix Leaflet sizing when parent renders after mount
     const t = setTimeout(() => window.dispatchEvent(new Event("resize")), 200);
     return () => clearTimeout(t);
   }, []);
 
   return (
     <MapContainer
-      center={[40.715, -74.005]}
-      zoom={13}
+      center={center}
+      zoom={zoom}
       scrollWheelZoom
       style={{ height: "100%", width: "100%" }}
     >
@@ -36,7 +43,7 @@ export default function CrimeMap({ layer }: { layer: "heatmap" | "markers" | "cl
           <Circle
             key={i}
             center={[lat, lng]}
-            radius={intensity * 600}
+            radius={intensity * 1400}
             pathOptions={{
               color: intensity > 0.75 ? "#c0392b" : intensity > 0.5 ? "#e08c3b" : "#2aa7b8",
               fillOpacity: 0.35,
