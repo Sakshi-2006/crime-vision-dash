@@ -10,6 +10,9 @@ import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from "@/components/ui/select";
 import { toast } from "sonner";
+import { useEffect, useState } from "react";
+import { getStoredTheme, setTheme, type Theme } from "@/lib/theme";
+import { Sun, Moon, Monitor, Check } from "lucide-react";
 
 export const Route = createFileRoute("/app/settings")({
   component: SettingsPage,
@@ -108,22 +111,58 @@ function SettingsPage() {
         <TabsContent value="theme" className="mt-4">
           <Card>
             <CardHeader><CardTitle>Appearance</CardTitle></CardHeader>
-            <CardContent className="grid grid-cols-1 gap-3 md:grid-cols-3">
-              {[
-                { name: "Light", desc: "Default enterprise" },
-                { name: "Dark", desc: "Command center" },
-                { name: "System", desc: "Auto by OS" },
-              ].map((t) => (
-                <button key={t.name} className="rounded-xl border border-border p-4 text-left transition hover:border-primary hover:shadow-md">
-                  <div className="mb-3 h-16 rounded-md bg-gradient-to-br from-primary to-info" />
-                  <div className="font-semibold">{t.name}</div>
-                  <div className="text-xs text-muted-foreground">{t.desc}</div>
-                </button>
-              ))}
+            <CardContent>
+              <ThemePicker />
             </CardContent>
           </Card>
         </TabsContent>
       </Tabs>
+    </div>
+  );
+}
+
+function ThemePicker() {
+  const [theme, setThemeState] = useState<Theme>("system");
+  useEffect(() => { setThemeState(getStoredTheme()); }, []);
+
+  const options: { value: Theme; name: string; desc: string; icon: typeof Sun }[] = [
+    { value: "light",  name: "Light",  desc: "Default enterprise", icon: Sun },
+    { value: "dark",   name: "Dark",   desc: "Command center",     icon: Moon },
+    { value: "system", name: "System", desc: "Auto by OS",         icon: Monitor },
+  ];
+
+  const choose = (t: Theme) => {
+    setThemeState(t);
+    setTheme(t);
+    toast.success(`Theme set to ${t}`);
+  };
+
+  return (
+    <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+      {options.map((t) => {
+        const Icon = t.icon;
+        const active = theme === t.value;
+        return (
+          <button
+            key={t.value}
+            onClick={() => choose(t.value)}
+            className={`relative rounded-xl border p-4 text-left transition hover:shadow-md ${
+              active ? "border-primary ring-2 ring-primary/30" : "border-border hover:border-primary"
+            }`}
+          >
+            {active && (
+              <span className="absolute right-3 top-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                <Check className="h-3.5 w-3.5" />
+              </span>
+            )}
+            <div className="mb-3 flex h-16 items-center justify-center rounded-md bg-gradient-to-br from-primary to-info text-primary-foreground">
+              <Icon className="h-6 w-6" />
+            </div>
+            <div className="font-semibold">{t.name}</div>
+            <div className="text-xs text-muted-foreground">{t.desc}</div>
+          </button>
+        );
+      })}
     </div>
   );
 }
