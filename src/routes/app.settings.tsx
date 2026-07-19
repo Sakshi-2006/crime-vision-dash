@@ -10,6 +10,9 @@ import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from "@/components/ui/select";
 import { toast } from "sonner";
+import { useEffect, useState } from "react";
+import { getStoredTheme, setTheme, type Theme } from "@/lib/theme";
+import { Sun, Moon, Monitor, Check } from "lucide-react";
 
 export const Route = createFileRoute("/app/settings")({
   component: SettingsPage,
