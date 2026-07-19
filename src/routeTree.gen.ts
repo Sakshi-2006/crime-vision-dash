@@ -12,10 +12,18 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as VerifyOtpRouteImport } from './routes/verify-otp'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as PublicRouteImport } from './routes/public'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PublicIndexRouteImport } from './routes/public.index'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as PublicTrendsRouteImport } from './routes/public.trends'
+import { Route as PublicSafetyRouteImport } from './routes/public.safety'
+import { Route as PublicReportRouteImport } from './routes/public.report'
+import { Route as PublicHeatmapRouteImport } from './routes/public.heatmap'
+import { Route as PublicEmergencyRouteImport } from './routes/public.emergency'
+import { Route as PublicAlertsRouteImport } from './routes/public.alerts'
 import { Route as AppUsersRouteImport } from './routes/app.users'
 import { Route as AppSettingsRouteImport } from './routes/app.settings'
 import { Route as AppResourcesRouteImport } from './routes/app.resources'
@@ -45,6 +53,11 @@ const ResetPasswordRoute = ResetPasswordRouteImport.update({
   path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PublicRoute = PublicRouteImport.update({
+  id: '/public',
+  path: '/public',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
   id: '/forgot-password',
   path: '/forgot-password',
@@ -60,10 +73,45 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PublicIndexRoute = PublicIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PublicRoute,
+} as any)
 const AppIndexRoute = AppIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AppRoute,
+} as any)
+const PublicTrendsRoute = PublicTrendsRouteImport.update({
+  id: '/trends',
+  path: '/trends',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicSafetyRoute = PublicSafetyRouteImport.update({
+  id: '/safety',
+  path: '/safety',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicReportRoute = PublicReportRouteImport.update({
+  id: '/report',
+  path: '/report',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicHeatmapRoute = PublicHeatmapRouteImport.update({
+  id: '/heatmap',
+  path: '/heatmap',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicEmergencyRoute = PublicEmergencyRouteImport.update({
+  id: '/emergency',
+  path: '/emergency',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicAlertsRoute = PublicAlertsRouteImport.update({
+  id: '/alerts',
+  path: '/alerts',
+  getParentRoute: () => PublicRoute,
 } as any)
 const AppUsersRoute = AppUsersRouteImport.update({
   id: '/users',
@@ -135,6 +183,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/forgot-password': typeof ForgotPasswordRoute
+  '/public': typeof PublicRouteWithChildren
   '/reset-password': typeof ResetPasswordRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/verify-otp': typeof VerifyOtpRoute
@@ -151,7 +200,14 @@ export interface FileRoutesByFullPath {
   '/app/resources': typeof AppResourcesRoute
   '/app/settings': typeof AppSettingsRoute
   '/app/users': typeof AppUsersRoute
+  '/public/alerts': typeof PublicAlertsRoute
+  '/public/emergency': typeof PublicEmergencyRoute
+  '/public/heatmap': typeof PublicHeatmapRoute
+  '/public/report': typeof PublicReportRoute
+  '/public/safety': typeof PublicSafetyRoute
+  '/public/trends': typeof PublicTrendsRoute
   '/app/': typeof AppIndexRoute
+  '/public/': typeof PublicIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -172,13 +228,21 @@ export interface FileRoutesByTo {
   '/app/resources': typeof AppResourcesRoute
   '/app/settings': typeof AppSettingsRoute
   '/app/users': typeof AppUsersRoute
+  '/public/alerts': typeof PublicAlertsRoute
+  '/public/emergency': typeof PublicEmergencyRoute
+  '/public/heatmap': typeof PublicHeatmapRoute
+  '/public/report': typeof PublicReportRoute
+  '/public/safety': typeof PublicSafetyRoute
+  '/public/trends': typeof PublicTrendsRoute
   '/app': typeof AppIndexRoute
+  '/public': typeof PublicIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/forgot-password': typeof ForgotPasswordRoute
+  '/public': typeof PublicRouteWithChildren
   '/reset-password': typeof ResetPasswordRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/verify-otp': typeof VerifyOtpRoute
@@ -195,7 +259,14 @@ export interface FileRoutesById {
   '/app/resources': typeof AppResourcesRoute
   '/app/settings': typeof AppSettingsRoute
   '/app/users': typeof AppUsersRoute
+  '/public/alerts': typeof PublicAlertsRoute
+  '/public/emergency': typeof PublicEmergencyRoute
+  '/public/heatmap': typeof PublicHeatmapRoute
+  '/public/report': typeof PublicReportRoute
+  '/public/safety': typeof PublicSafetyRoute
+  '/public/trends': typeof PublicTrendsRoute
   '/app/': typeof AppIndexRoute
+  '/public/': typeof PublicIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -203,6 +274,7 @@ export interface FileRouteTypes {
     | '/'
     | '/app'
     | '/forgot-password'
+    | '/public'
     | '/reset-password'
     | '/sitemap.xml'
     | '/verify-otp'
@@ -219,7 +291,14 @@ export interface FileRouteTypes {
     | '/app/resources'
     | '/app/settings'
     | '/app/users'
+    | '/public/alerts'
+    | '/public/emergency'
+    | '/public/heatmap'
+    | '/public/report'
+    | '/public/safety'
+    | '/public/trends'
     | '/app/'
+    | '/public/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -240,12 +319,20 @@ export interface FileRouteTypes {
     | '/app/resources'
     | '/app/settings'
     | '/app/users'
+    | '/public/alerts'
+    | '/public/emergency'
+    | '/public/heatmap'
+    | '/public/report'
+    | '/public/safety'
+    | '/public/trends'
     | '/app'
+    | '/public'
   id:
     | '__root__'
     | '/'
     | '/app'
     | '/forgot-password'
+    | '/public'
     | '/reset-password'
     | '/sitemap.xml'
     | '/verify-otp'
@@ -262,13 +349,21 @@ export interface FileRouteTypes {
     | '/app/resources'
     | '/app/settings'
     | '/app/users'
+    | '/public/alerts'
+    | '/public/emergency'
+    | '/public/heatmap'
+    | '/public/report'
+    | '/public/safety'
+    | '/public/trends'
     | '/app/'
+    | '/public/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AppRoute: typeof AppRouteWithChildren
   ForgotPasswordRoute: typeof ForgotPasswordRoute
+  PublicRoute: typeof PublicRouteWithChildren
   ResetPasswordRoute: typeof ResetPasswordRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   VerifyOtpRoute: typeof VerifyOtpRoute
@@ -297,6 +392,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/public': {
+      id: '/public'
+      path: '/public'
+      fullPath: '/public'
+      preLoaderRoute: typeof PublicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/forgot-password': {
       id: '/forgot-password'
       path: '/forgot-password'
@@ -318,12 +420,61 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/public/': {
+      id: '/public/'
+      path: '/'
+      fullPath: '/public/'
+      preLoaderRoute: typeof PublicIndexRouteImport
+      parentRoute: typeof PublicRoute
+    }
     '/app/': {
       id: '/app/'
       path: '/'
       fullPath: '/app/'
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRoute
+    }
+    '/public/trends': {
+      id: '/public/trends'
+      path: '/trends'
+      fullPath: '/public/trends'
+      preLoaderRoute: typeof PublicTrendsRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/public/safety': {
+      id: '/public/safety'
+      path: '/safety'
+      fullPath: '/public/safety'
+      preLoaderRoute: typeof PublicSafetyRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/public/report': {
+      id: '/public/report'
+      path: '/report'
+      fullPath: '/public/report'
+      preLoaderRoute: typeof PublicReportRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/public/heatmap': {
+      id: '/public/heatmap'
+      path: '/heatmap'
+      fullPath: '/public/heatmap'
+      preLoaderRoute: typeof PublicHeatmapRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/public/emergency': {
+      id: '/public/emergency'
+      path: '/emergency'
+      fullPath: '/public/emergency'
+      preLoaderRoute: typeof PublicEmergencyRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/public/alerts': {
+      id: '/public/alerts'
+      path: '/alerts'
+      fullPath: '/public/alerts'
+      preLoaderRoute: typeof PublicAlertsRouteImport
+      parentRoute: typeof PublicRoute
     }
     '/app/users': {
       id: '/app/users'
@@ -455,10 +606,34 @@ const AppRouteChildren: AppRouteChildren = {
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 
+interface PublicRouteChildren {
+  PublicAlertsRoute: typeof PublicAlertsRoute
+  PublicEmergencyRoute: typeof PublicEmergencyRoute
+  PublicHeatmapRoute: typeof PublicHeatmapRoute
+  PublicReportRoute: typeof PublicReportRoute
+  PublicSafetyRoute: typeof PublicSafetyRoute
+  PublicTrendsRoute: typeof PublicTrendsRoute
+  PublicIndexRoute: typeof PublicIndexRoute
+}
+
+const PublicRouteChildren: PublicRouteChildren = {
+  PublicAlertsRoute: PublicAlertsRoute,
+  PublicEmergencyRoute: PublicEmergencyRoute,
+  PublicHeatmapRoute: PublicHeatmapRoute,
+  PublicReportRoute: PublicReportRoute,
+  PublicSafetyRoute: PublicSafetyRoute,
+  PublicTrendsRoute: PublicTrendsRoute,
+  PublicIndexRoute: PublicIndexRoute,
+}
+
+const PublicRouteWithChildren =
+  PublicRoute._addFileChildren(PublicRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AppRoute: AppRouteWithChildren,
   ForgotPasswordRoute: ForgotPasswordRoute,
+  PublicRoute: PublicRouteWithChildren,
   ResetPasswordRoute: ResetPasswordRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   VerifyOtpRoute: VerifyOtpRoute,

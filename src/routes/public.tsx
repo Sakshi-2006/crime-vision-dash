@@ -42,7 +42,7 @@ function PublicLayout() {
         <nav className="mx-auto flex max-w-7xl gap-1 overflow-x-auto px-4 pb-2">
           {nav.map((n) => {
             const Icon = n.icon;
-            const active = n.exact ? pathname === n.to : pathname.startsWith(n.to);
+            const active = "exact" in n && n.exact ? pathname === n.to : pathname.startsWith(n.to) && n.to !== "/public";
             return (
               <Link
                 key={n.to}
