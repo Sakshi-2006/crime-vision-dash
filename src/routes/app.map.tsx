@@ -63,10 +63,10 @@ function MapPage() {
             <CardContent>
               <div className="space-y-3 text-sm">
                 {[
-                  { name: "Eastfield · Sector 4", pct: 92 },
-                  { name: "Central · Market St", pct: 78 },
-                  { name: "Southbay · Docks", pct: 65 },
-                  { name: "Harborline · Node 7", pct: 48 },
+                  { name: "Bengaluru · KR Puram", pct: 92 },
+                  { name: "Bengaluru · Majestic", pct: 78 },
+                  { name: "Mysuru · Devaraja Mkt", pct: 65 },
+                  { name: "Hubballi · Gokul Rd", pct: 48 },
                 ].map((d) => (
                   <div key={d.name}>
                     <div className="mb-1 flex justify-between">
