@@ -34,43 +34,43 @@ function LoginPage() {
   };
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-primary">
-      {/* Ambient */}
+    <div className="relative min-h-screen w-full overflow-hidden bg-white text-foreground">
+      {/* Subtle light ambient */}
       <div
         aria-hidden
-        className="absolute inset-0 opacity-40"
+        className="absolute inset-0 opacity-60"
         style={{
           background:
-            "radial-gradient(1200px 500px at 20% -10%, oklch(0.66 0.11 200 / 0.35), transparent 60%), radial-gradient(900px 400px at 90% 110%, oklch(0.4 0.09 258 / 0.5), transparent 60%)",
+            "radial-gradient(1200px 500px at 20% -10%, oklch(0.95 0.02 250 / 0.6), transparent 60%), radial-gradient(900px 400px at 90% 110%, oklch(0.96 0.01 250 / 0.7), transparent 60%)",
         }}
       />
       <div
         aria-hidden
-        className="absolute inset-0 opacity-[0.06]"
+        className="absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage:
-            "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
+            "linear-gradient(to right, oklch(0.2 0.03 250) 1px, transparent 1px), linear-gradient(to bottom, oklch(0.2 0.03 250) 1px, transparent 1px)",
           backgroundSize: "56px 56px",
         }}
       />
 
       <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-8">
         {/* Header */}
-        <header className="flex items-center justify-between text-primary-foreground">
+        <header className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-foreground/10 backdrop-blur">
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
               <ShieldCheck className="h-6 w-6" />
             </div>
             <div>
-              <div className="text-lg font-bold tracking-tight">SentinelIQ</div>
-              <div className="text-[10px] uppercase tracking-widest opacity-70">
+              <div className="text-lg font-bold tracking-tight text-foreground">SentinelIQ</div>
+              <div className="text-[10px] uppercase tracking-widest text-muted-foreground">
                 Karnataka State Police · Crime Intelligence Platform
               </div>
             </div>
           </div>
           <Link
             to="/public"
-            className="hidden items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/5 px-4 py-2 text-xs font-medium text-primary-foreground/90 backdrop-blur transition hover:bg-primary-foreground/10 md:inline-flex"
+            className="hidden items-center gap-2 rounded-full border border-border bg-white px-4 py-2 text-xs font-medium text-foreground shadow-sm transition hover:bg-muted md:inline-flex"
           >
             <Users className="h-3.5 w-3.5" /> Public Portal
             <ArrowRight className="h-3 w-3" />
@@ -83,12 +83,12 @@ function LoginPage() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="glass-panel mx-auto w-full max-w-md rounded-3xl p-8 shadow-2xl md:p-10"
+            className="mx-auto w-full max-w-md rounded-3xl border border-border bg-white p-8 shadow-xl shadow-slate-200/60 md:p-10"
           >
             <div className="mb-1 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
               <Lock className="h-3 w-3" /> Karnataka Police only
             </div>
-            <h2 className="mt-3 text-2xl font-bold tracking-tight">Officer sign in</h2>
+            <h2 className="mt-3 text-2xl font-bold tracking-tight text-foreground">Officer sign in</h2>
             <p className="mt-1 text-sm text-muted-foreground">
               Authorised personnel of the Karnataka State Police. Public access is restricted.
             </p>
@@ -106,7 +106,7 @@ function LoginPage() {
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     placeholder="officer@ksp.gov.in"
-                    className="h-11 pl-9"
+                    className="h-11 pl-9 bg-white"
                   />
                 </div>
               </div>
@@ -114,7 +114,7 @@ function LoginPage() {
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <Label htmlFor="password">Password</Label>
-                  <Link to="/forgot-password" className="text-xs font-medium text-info hover:underline">
+                  <Link to="/forgot-password" className="text-xs font-medium text-primary hover:underline">
                     Forgot?
                   </Link>
                 </div>
@@ -127,7 +127,7 @@ function LoginPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
-                    className="h-11 pl-9"
+                    className="h-11 pl-9 bg-white"
                   />
                 </div>
               </div>
@@ -165,17 +165,17 @@ function LoginPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="rounded-3xl border border-primary-foreground/15 bg-primary-foreground/5 p-8 text-primary-foreground backdrop-blur md:p-10"
+            className="rounded-3xl border border-border bg-muted/40 p-8 shadow-sm md:p-10"
           >
-            <div className="inline-flex items-center gap-2 rounded-full bg-info/20 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-info">
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
               <Users className="h-3 w-3" /> For citizens · No login required
             </div>
-            <h1 className="mt-4 text-3xl font-bold tracking-tight leading-tight">
+            <h1 className="mt-4 text-3xl font-bold tracking-tight leading-tight text-foreground">
               Public Safety Portal
               <br />
-              <span className="text-info">for the people of Karnataka.</span>
+              <span className="text-primary">for the people of Karnataka.</span>
             </h1>
-            <p className="mt-3 max-w-md text-sm text-primary-foreground/70">
+            <p className="mt-3 max-w-md text-sm text-muted-foreground">
               Aggregated, anonymised safety intelligence — helping you stay informed
               without revealing any investigation-sensitive information.
             </p>
@@ -191,8 +191,8 @@ function LoginPage() {
               ].map((f) => {
                 const Icon = f.icon;
                 return (
-                  <li key={f.label} className="flex items-start gap-2 rounded-lg border border-primary-foreground/10 bg-primary-foreground/5 p-3 text-xs">
-                    <Icon className="mt-0.5 h-4 w-4 shrink-0 text-info" />
+                  <li key={f.label} className="flex items-start gap-2 rounded-lg border border-border bg-white p-3 text-xs text-foreground shadow-sm">
+                    <Icon className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                     <span>{f.label}</span>
                   </li>
                 );
@@ -200,17 +200,17 @@ function LoginPage() {
             </ul>
 
             <div className="mt-6 flex flex-col gap-2 sm:flex-row">
-              <Button asChild size="lg" className="w-full bg-info text-info-foreground hover:bg-info/90 sm:w-auto">
+              <Button asChild size="lg" className="w-full sm:w-auto">
                 <Link to="/public">
                   Open Public Portal <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="w-full border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 sm:w-auto">
+              <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
                 <Link to="/public/report">Report anonymously</Link>
               </Button>
             </div>
 
-            <p className="mt-5 text-[11px] text-primary-foreground/50">
+            <p className="mt-5 text-[11px] text-muted-foreground">
               No suspect names, investigation details, or sensitive case data are shown on the public portal.
             </p>
           </motion.div>
