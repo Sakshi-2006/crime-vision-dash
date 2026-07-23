@@ -40,7 +40,7 @@ export const dataset = {
   stations: raw.station_summary as StationSummary[],
   heatmap: raw.heatmap_points as [number, number, number][],
   predictionConfusion: raw.prediction_confusion as { actual: string; predicted: string; count: number }[],
-  districtCoords: raw.district_coords as Record<string, [number, number]>,
+  districtCoords: raw.district_coords as unknown as Record<string, [number, number]>,
   totals: raw.totals as { total_firs: number; districts: number; stations: number; categories: number },
 };
 
