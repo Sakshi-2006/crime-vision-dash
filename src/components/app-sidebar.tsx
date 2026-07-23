@@ -31,14 +31,14 @@ import {
 const primary = [
   { title: "Dashboard", url: "/app/dashboard", icon: LayoutDashboard },
   { title: "Crime Analytics", url: "/app/analytics", icon: BarChart3 },
-  { title: "Crime Map", url: "/app/map", icon: Map },
+  { title: "Hotspot Map", url: "/app/map", icon: Map },
   { title: "Districts", url: "/app/districts", icon: Building2 },
 ];
 
 const intel = [
-  { title: "AI Predictions", url: "/app/predictions", icon: Brain },
+  { title: "Predictions", url: "/app/predictions", icon: Brain },
   { title: "Network Intel", url: "/app/network", icon: Network },
-  { title: "Resources", url: "/app/resources", icon: Users },
+  { title: "Patrol Planning", url: "/app/resources", icon: Users },
   { title: "Alerts", url: "/app/alerts", icon: BellRing },
 ];
 
@@ -88,7 +88,7 @@ export function AppSidebar() {
               SentinelIQ
             </span>
             <span className="text-[10px] uppercase tracking-wider text-sidebar-foreground/60">
-              Crime Intelligence
+              Namma Sentinel · KSP
             </span>
           </div>
         </Link>
