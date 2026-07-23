@@ -88,7 +88,7 @@ export function AppSidebar() {
               SentinelIQ
             </span>
             <span className="text-[10px] uppercase tracking-wider text-sidebar-foreground/60">
-              Crime Intelligence
+              Namma Sentinel · KSP
             </span>
           </div>
         </Link>
